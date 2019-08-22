@@ -10,6 +10,8 @@ router.get('/', (req, res) => {
     .catch(() => {
       res
         .status(500)
-        .json({ message: 'Failed to retrieve the  accounts' });
+        .json({ message: 'failed retrieve the  accounts' });
     });
 });
+
+module.exports = router;
