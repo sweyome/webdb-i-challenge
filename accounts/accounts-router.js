@@ -50,4 +50,21 @@ router.post('/', (req, res) => {
   }
 });
 
+router.put('/:id', (req, res) => {
+  db('accounts')
+    .where({ id: req.params.id })
+    .update(req.body)
+    .then(count => {
+      if (count) {
+        res.status(200).json({ message: `${count} record(s) updated` });
+      } else {
+        res.status(404).json({ message: 'Account not found' });
+      }
+    })
+    .catch(() => {
+      res.status(500).json({ message: 'Could not update the account' });
+    });
+});
+
+
 module.exports = router;
